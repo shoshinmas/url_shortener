@@ -14,7 +14,7 @@ def urlShort(request):
             new_url = UrlData(url=url, slug=slug)
             new_url.save()
             request.user.urlshort.add(new_url)
-            return redirect('/')
+            return redirect('/templates/')
     else:
         form = Url()
     data = UrlData.objects.all()
@@ -22,7 +22,7 @@ def urlShort(request):
         'form': form,
         'data': data
     }
-    return render(request, 'index.html', context)
+    return render(request, 'url/index.html', context)
 
 def urlRedirect(request, slugs):
     data = UrlData.objects.get(slug=slugs)

@@ -4,4 +4,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("Hello world")
+    c = {}
+    c.update(csrf(request))
+    return render_to_response('url/index.html', c)
