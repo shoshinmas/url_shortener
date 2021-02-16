@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from django.conf.urls import url
+from . import views
+app_name = "url"
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("", views.urlShort, name="home"),
+    path("u/<str:slugs>", views.urlRedirect, name="redirect")
 ]
